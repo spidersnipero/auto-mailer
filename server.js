@@ -13,6 +13,9 @@ const bP  = require("body-parser")
 const port = 3000
 app.use(bP.urlencoded({extended:true}))
 app.get('/', (req, res) => {
+  res.sendFile(__dirname+"/index.html");
+});
+app.post("/",function(req,res){
     const options = {
         from : "spidersnipero@outlook.com",
         to :""+req.emailtosend,
@@ -24,13 +27,8 @@ app.get('/', (req, res) => {
             console.log(err);
             return;
         }
-        console.log(info.response);
-
+        console.log("Sent "+info.response);
     })
-  res.sendFile(__dirname+"/index.html");
-});
-app.post("/",function(req,res){
-
     console.log(req.body)
     res.sendFile(__dirname+"/sent.html")
 })
