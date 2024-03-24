@@ -3,7 +3,7 @@ const express = require('express')
 
 const app = express()
 const bP  = require("body-parser")
-const port = 443
+const port = 3000
 app.use(bP.urlencoded({extended:true}))
 app.get('/', (req, res) => {
   res.sendFile(__dirname+"/index.html");
